@@ -4,5 +4,6 @@ public enum LayoutTypes
 {
     Grid,
     VBox,
-    HBox
+    HBox,
+    Absolute
 }

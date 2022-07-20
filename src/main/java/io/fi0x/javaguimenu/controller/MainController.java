@@ -1,9 +1,8 @@
 package io.fi0x.javaguimenu.controller;
 
-import io.fi0x.javaguimenu.layouts.LayoutTypes;
+import io.fi0x.javaguimenu.layouts.*;
 import io.fi0x.javalogger.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.Map;
@@ -20,23 +19,41 @@ public class MainController
 
     public void setUserOptions(Map<String, Object> settings)
     {
-        for(Map.Entry<String, Object> entry : settings.entrySet())
+        LayoutTypes layout = (LayoutTypes) settings.get("layout");
+        if(layout == null)
         {
-            switch(entry.getKey())
-            {
-                case "layout":
-                    setLayout(LayoutTypes.valueOf((String) entry.getValue()));
-                    break;
-                default:
-                    Logger.log("Unknown entry in user settings detected", "info");
-            }
+            Logger.log("No layout type found", "warning");
+            return;
         }
+
+        settings.remove("layout");
+        setLayout(layout, settings);
     }
 
-    private void setLayout(LayoutTypes type)
+    private void setLayout(LayoutTypes type, Map<String, Object> settings)
     {
-        apMain.getChildren().add(new Button());
-        //TODO: Anchor correct layout to main pane
-        //TODO: Add UI elements that user selects here
+        switch(type)
+        {
+            case Grid:
+                apMain.getChildren().add(new GridLayout(settings));
+                break;
+            case VBox:
+                settings.remove("columns");
+                apMain.getChildren().add(new VBoxLayout(settings));
+                break;
+            case HBox:
+                settings.remove("rows");
+                apMain.getChildren().add(new HBoxLayout(settings));
+                break;
+            case Absolute:
+                settings.remove("elementSpacing");
+                settings.remove("rows");
+                settings.remove("columns");
+                apMain.getChildren().add(new AbsoluteLayout(settings));
+                break;
+            default:
+                Logger.log("The selected layout is not valid", "warning");
+                break;
+        }
     }
 }
