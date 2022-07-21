@@ -1,5 +1,6 @@
 package io.fi0x.javaguimenu.elements;
 
+import io.fi0x.javalogger.logging.Logger;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 
@@ -76,6 +77,9 @@ public class RegularButton extends AbstractElement
         btn.setRowSpan(rowSpan);
         btn.setXPos(xPosition);
         btn.setYPos(yPosition);
+
+        Logger.log("New button created", "verbose");
+
         return btn;
     }
 

@@ -29,6 +29,7 @@ public class AbsoluteLayout extends Pane
 
     private void setUserOptions(Map<String, Object> settings)
     {
+        Logger.log("Absolute layout setup started", "verbose");
         for(Map.Entry<String, Object> entry : settings.entrySet())
         {
             if("elements".equals(entry.getKey()))
@@ -48,5 +49,6 @@ public class AbsoluteLayout extends Pane
             n.setTranslateY(e.getYPos());
             this.getChildren().add(n);
         }
+        Logger.log("Added " + elements.size() + " elements to layout", "verbose");
     }
 }

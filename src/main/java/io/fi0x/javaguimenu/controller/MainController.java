@@ -28,6 +28,8 @@ public class MainController
 
         settings.remove("layout");
         setLayout(layout, settings);
+
+        Logger.log("Main controller initialized", "verbose");
     }
 
     private void setLayout(LayoutTypes type, Map<String, Object> settings)
@@ -35,17 +37,21 @@ public class MainController
         switch(type)
         {
             case Grid:
+                Logger.log("Using Grid layout", "verbose");
                 apMain.getChildren().add(new GridLayout(settings));
                 break;
             case VBox:
+                Logger.log("Using VBox layout", "verbose");
                 settings.remove("columns");
                 apMain.getChildren().add(new VBoxLayout(settings));
                 break;
             case HBox:
+                Logger.log("Using HBox layout", "verbose");
                 settings.remove("rows");
                 apMain.getChildren().add(new HBoxLayout(settings));
                 break;
             case Absolute:
+                Logger.log("Using Absolute layout", "verbose");
                 settings.remove("elementSpacing");
                 settings.remove("rows");
                 settings.remove("columns");

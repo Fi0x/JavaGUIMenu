@@ -36,6 +36,7 @@ public class GridLayout extends GridPane
 
     private void setUserOptions(Map<String, Object> settings)
     {
+        Logger.log("Grid layout setup started", "verbose");
         for(Map.Entry<String, Object> entry : settings.entrySet())
         {
             switch(entry.getKey())
@@ -67,6 +68,7 @@ public class GridLayout extends GridPane
             refineElementValues(e);
             this.add(e.getNodeVersion(), e.getColIdx(), e.getRowIdx(), e.getColSpan(), e.getRowSpan());
         }
+        Logger.log("Added " + elements.size() + " elements to layout", "verbose");
     }
     private void refineElementValues(AbstractElement element)
     {

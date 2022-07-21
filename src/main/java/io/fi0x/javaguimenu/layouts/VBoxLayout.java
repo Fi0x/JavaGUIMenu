@@ -31,6 +31,7 @@ public class VBoxLayout extends VBox
 
     private void setUserOptions(Map<String, Object> settings)
     {
+        Logger.log("VBox layout setup started", "verbose");
         for(Map.Entry<String, Object> entry : settings.entrySet())
         {
             switch(entry.getKey())
@@ -58,6 +59,7 @@ public class VBoxLayout extends VBox
             refineElementValues(e);
             this.getChildren().add(e.getRowIdx(), e.getNodeVersion());
         }
+        Logger.log("Added " + elements.size() + " elements to layout", "verbose");
     }
     private void refineElementValues(AbstractElement element)
     {

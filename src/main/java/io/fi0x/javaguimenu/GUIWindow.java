@@ -3,6 +3,7 @@ package io.fi0x.javaguimenu;
 import io.fi0x.javaguimenu.controller.MainController;
 import io.fi0x.javaguimenu.elements.AbstractElement;
 import io.fi0x.javaguimenu.layouts.LayoutTypes;
+import io.fi0x.javalogger.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -62,6 +63,13 @@ public class GUIWindow extends Application
      */
     public static void start(String[] args)
     {
+        for(String arg : args)
+        {
+            if(arg.equals("-d"))
+                Logger.getInstance().setDebug(true);
+            if(arg.equals("-v"))
+                Logger.getInstance().setVerbose(true);
+        }
         Application.launch(args);
     }
 
@@ -108,7 +116,6 @@ public class GUIWindow extends Application
      */
     public static void addElement(AbstractElement node)
     {
-        System.out.println("Adding element");
         for(int i = 0; i <= elements.size(); i++)
         {
             if(i == elements.size())
@@ -122,7 +129,6 @@ public class GUIWindow extends Application
                 break;
             }
         }
-        System.out.println("Elements: " + elements.size());
     }
     /**
      * This method changes the behaviour of the element placement inside the layout.

@@ -31,6 +31,7 @@ public class HBoxLayout extends HBox
 
     private void setUserOptions(Map<String, Object> settings)
     {
+        Logger.log("HBox layout setup started", "verbose");
         for(Map.Entry<String, Object> entry : settings.entrySet())
         {
             switch(entry.getKey())
@@ -58,6 +59,7 @@ public class HBoxLayout extends HBox
             refineElementValues(e);
             this.getChildren().add(e.getColIdx(), e.getNodeVersion());
         }
+        Logger.log("Added " + elements.size() + " elements to layout", "verbose");
     }
     private void refineElementValues(AbstractElement element)
     {
