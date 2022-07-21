@@ -4,10 +4,7 @@ import io.fi0x.javaguimenu.elements.AbstractElement;
 import io.fi0x.javalogger.logging.Logger;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -44,6 +41,10 @@ public class GridLayout extends GridPane
                     break;
                 case "rows":
                     rowCount = (int) entry.getValue();
+                    break;
+                case "width":
+                    break;
+                case "height":
                     break;
                 default:
                     Logger.log("Invalid user-settings-entry in grid layout detected", "info");
@@ -111,5 +112,10 @@ public class GridLayout extends GridPane
             rc.setFillHeight(true);
             this.getRowConstraints().add(rc);
         }
+
+        AnchorPane.setTopAnchor(this, 0d);
+        AnchorPane.setBottomAnchor(this, 0d);
+        AnchorPane.setLeftAnchor(this, 0d);
+        AnchorPane.setRightAnchor(this, 0d);
     }
 }

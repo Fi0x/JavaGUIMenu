@@ -51,30 +51,29 @@ public class GUIWindow extends Application
         primaryStage.show();
     }
 
-    public void start(String[] args)
+    public static void start(String[] args)
     {
-        System.out.println("Elements in start: " + elements.size());
         Application.launch(args);
     }
 
-    public void setTitle(String title)
+    public static void setTitle(String title)
     {
         windowTitle = title;
     }
-    public void setSize(double w, double h)
+    public static void setSize(double w, double h)
     {
         width = w;
         height = h;
     }
-    public void setResizable(boolean isResizable)
+    public static void setResizable(boolean isResizable)
     {
         resizable = isResizable;
     }
-    public void setLayout(LayoutTypes type)
+    public static void setLayout(LayoutTypes type)
     {
         layout = type;
     }
-    public void addElement(AbstractElement node)
+    public static void addElement(AbstractElement node)
     {
         System.out.println("Adding element");
         for(int i = 0; i <= elements.size(); i++)
@@ -92,15 +91,15 @@ public class GUIWindow extends Application
         }
         System.out.println("Elements: " + elements.size());
     }
-    public void setElementSpacing(boolean spaceEvenly)
+    public static void setElementSpacing(boolean spaceEvenly)
     {
         spaceElementsEvenly = spaceEvenly;
     }
-    public void setColumns(int columnCount)
+    public static void setColumns(int columnCount)
     {
         columns = columnCount;
     }
-    public void setRows(int rowCount)
+    public static void setRows(int rowCount)
     {
         rows = rowCount;
     }
@@ -114,6 +113,8 @@ public class GUIWindow extends Application
         options.put("elementSpacing", spaceElementsEvenly);
         options.put("columns", columns);
         options.put("rows", rows);
+        options.put("width", width);
+        options.put("height", height);
 
         return options;
     }

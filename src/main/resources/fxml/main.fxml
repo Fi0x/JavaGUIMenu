@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane fx:id="apMain" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="io.fi0x.javaguimenu.controller.MainController">
+<?import java.net.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="apMain" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.fi0x.javaguimenu.controller.MainController">
     <stylesheets>
-        <URL value="@../css/main.css"/>
+        <URL value="@../css/main.css" />
     </stylesheets>
 </AnchorPane>
