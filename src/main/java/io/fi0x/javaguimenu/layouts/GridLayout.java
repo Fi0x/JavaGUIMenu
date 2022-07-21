@@ -87,7 +87,6 @@ public class GridLayout extends GridPane
             element.setRowIdx(nextRowIdx);
 
             nextColIdx++;
-            nextRowIdx++;
         }
         else
         {
