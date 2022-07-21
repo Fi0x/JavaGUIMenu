@@ -1,6 +1,5 @@
 package io.fi0x.javaguimenu;
 
-import com.sun.javafx.application.LauncherImpl;
 import io.fi0x.javaguimenu.controller.MainController;
 import io.fi0x.javaguimenu.elements.AbstractElement;
 import io.fi0x.javaguimenu.layouts.LayoutTypes;
@@ -17,15 +16,15 @@ import java.util.Map;
 
 public class GUIWindow extends Application
 {
-    private String title = "Unnamed";
-    private double width = 800;
-    private double height = 450;
-    private boolean resizable = true;
-    private LayoutTypes layout = LayoutTypes.Grid;
-    private final ArrayList<AbstractElement> elements = new ArrayList<>();
-    private boolean spaceElementsEvenly;
-    private int columns = 1;
-    private int rows = 1;
+    private static String windowTitle = "Unnamed";
+    private static double width = 800;
+    private static double height = 450;
+    private static boolean resizable = true;
+    private static LayoutTypes layout = LayoutTypes.Grid;
+    private static final ArrayList<AbstractElement> elements = new ArrayList<>();
+    private static boolean spaceElementsEvenly;
+    private static int columns = 1;
+    private static int rows = 1;
 
     @Override
     public void start(Stage primaryStage)
@@ -44,7 +43,7 @@ public class GUIWindow extends Application
         MainController controller = loader.getController();
         controller.setUserOptions(generateUserOptions());
 
-        primaryStage.setTitle(title);
+        primaryStage.setTitle(windowTitle);
         primaryStage.setHeight(height);
         primaryStage.setWidth(width);
         primaryStage.setScene(new Scene(root));
@@ -56,12 +55,11 @@ public class GUIWindow extends Application
     {
         System.out.println("Elements in start: " + elements.size());
         Application.launch(args);
-//        LauncherImpl.launchApplication(this.getClass(), args);
     }
 
     public void setTitle(String title)
     {
-        this.title = title;
+        windowTitle = title;
     }
     public void setSize(double w, double h)
     {

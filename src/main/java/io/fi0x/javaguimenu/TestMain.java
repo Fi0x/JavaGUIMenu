@@ -18,6 +18,7 @@ public class TestMain
         gw.addElement(btn1);
         gw.setColumns(3);
         gw.setRows(3);
+        gw.setTitle("Hi");
         gw.setLayout(LayoutTypes.Grid);
 
         gw.start(args);
