@@ -46,6 +46,7 @@ public class GridLayout extends GridPane
                     break;
                 case "elements":
                     elements = (ArrayList<AbstractElement>) entry.getValue();
+                    Logger.log("Loaded " + elements.size() + " elements from settings-map", "verbose");
                     break;
                 case "columns":
                     colCount = (int) entry.getValue();

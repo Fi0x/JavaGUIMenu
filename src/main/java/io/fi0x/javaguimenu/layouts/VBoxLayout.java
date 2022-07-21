@@ -41,6 +41,7 @@ public class VBoxLayout extends VBox
                     break;
                 case "elements":
                     elements = (ArrayList<AbstractElement>) entry.getValue();
+                    Logger.log("Loaded " + elements.size() + " elements from settings-map", "verbose");
                     break;
                 case "rows":
                     rowCount = (int) entry.getValue();

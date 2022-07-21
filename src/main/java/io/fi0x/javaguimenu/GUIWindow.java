@@ -129,6 +129,7 @@ public class GUIWindow extends Application
                 break;
             }
         }
+        Logger.log("Added new element to window", "verbose");
     }
     /**
      * This method changes the behaviour of the element placement inside the layout.

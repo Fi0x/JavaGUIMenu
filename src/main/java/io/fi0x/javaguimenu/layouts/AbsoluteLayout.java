@@ -33,7 +33,10 @@ public class AbsoluteLayout extends Pane
         for(Map.Entry<String, Object> entry : settings.entrySet())
         {
             if("elements".equals(entry.getKey()))
+            {
                 elements = (ArrayList<AbstractElement>) entry.getValue();
+                Logger.log("Loaded " + elements.size() + " elements from settings-map", "verbose");
+            }
             else
                 Logger.log("Invalid user-settings-entry in grid layout detected", "info");
         }
