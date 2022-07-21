@@ -2,8 +2,6 @@ package io.fi0x.javaguimenu.layouts;
 
 import io.fi0x.javaguimenu.elements.AbstractElement;
 import io.fi0x.javalogger.logging.Logger;
-import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.layout.*;
 
 import java.util.ArrayList;
@@ -11,7 +9,6 @@ import java.util.Map;
 
 public class VBoxLayout extends VBox
 {
-    private final Map<String, Object> settings;
     private boolean spaceElementsEvenly = true;
     private ArrayList<AbstractElement> elements;
     private int nextRowIdx = 0;
@@ -19,13 +16,12 @@ public class VBoxLayout extends VBox
 
     public VBoxLayout(Map<String, Object> userSettings)
     {
-        settings = userSettings;
-    }
+        AnchorPane.setTopAnchor(this, 0d);
+        AnchorPane.setBottomAnchor(this, 0d);
+        AnchorPane.setLeftAnchor(this, 0d);
+        AnchorPane.setRightAnchor(this, 0d);
 
-    @FXML
-    private void initialize()
-    {
-        setUserOptions(settings);
+        setUserOptions(userSettings);
     }
 
     private void setUserOptions(Map<String, Object> settings)

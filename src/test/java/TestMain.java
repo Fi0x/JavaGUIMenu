@@ -10,14 +10,14 @@ public class TestMain
         Logger.getInstance().setVerbose(true);
 
         RegularButton btn1 = new RegularButton();
-        btn1.setColIdx(1);
-        btn1.setRowIdx(1);
+        btn1.setColIdx(0);
+        btn1.setRowIdx(0);
         btn1.setText("Hallo");
         GUIWindow.addElement(btn1);
         GUIWindow.setColumns(3);
         GUIWindow.setRows(3);
         GUIWindow.setTitle("Hi");
-        GUIWindow.setLayout(LayoutTypes.Grid);
+        GUIWindow.setLayout(LayoutTypes.VBox);
 
         GUIWindow.start(args);
     }

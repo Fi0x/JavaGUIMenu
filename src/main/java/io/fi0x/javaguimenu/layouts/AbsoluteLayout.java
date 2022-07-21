@@ -11,18 +11,16 @@ import java.util.Map;
 
 public class AbsoluteLayout extends Pane
 {
-    private final Map<String, Object> settings;
     private ArrayList<AbstractElement> elements;
 
     public AbsoluteLayout(Map<String, Object> userSettings)
     {
-        settings = userSettings;
-    }
+        AnchorPane.setTopAnchor(this, 0d);
+        AnchorPane.setBottomAnchor(this, 0d);
+        AnchorPane.setLeftAnchor(this, 0d);
+        AnchorPane.setRightAnchor(this, 0d);
 
-    @FXML
-    private void initialize()
-    {
-        setUserOptions(settings);
+        setUserOptions(userSettings);
     }
 
     private void setUserOptions(Map<String, Object> settings)

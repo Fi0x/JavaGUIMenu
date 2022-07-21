@@ -21,6 +21,11 @@ public class GridLayout extends GridPane
 
     public GridLayout(Map<String, Object> userSettings)
     {
+        AnchorPane.setTopAnchor(this, 0d);
+        AnchorPane.setBottomAnchor(this, 0d);
+        AnchorPane.setLeftAnchor(this, 0d);
+        AnchorPane.setRightAnchor(this, 0d);
+
         setUserOptions(userSettings);
     }
 
@@ -112,10 +117,5 @@ public class GridLayout extends GridPane
             rc.setFillHeight(true);
             this.getRowConstraints().add(rc);
         }
-
-        AnchorPane.setTopAnchor(this, 0d);
-        AnchorPane.setBottomAnchor(this, 0d);
-        AnchorPane.setLeftAnchor(this, 0d);
-        AnchorPane.setRightAnchor(this, 0d);
     }
 }
