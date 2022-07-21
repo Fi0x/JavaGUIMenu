@@ -1,6 +1,6 @@
 package io.fi0x.javaguimenu.layouts;
 
-import io.fi0x.javaguimenu.elements.Element;
+import io.fi0x.javaguimenu.elements.AbstractElement;
 import io.fi0x.javalogger.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -13,7 +13,7 @@ public class VBoxLayout extends VBox
 {
     private final Map<String, Object> settings;
     private boolean spaceElementsEvenly = true;
-    private ArrayList<Element> elements;
+    private ArrayList<AbstractElement> elements;
     private int nextRowIdx = 0;
     private int rowCount = 1;
 
@@ -38,7 +38,7 @@ public class VBoxLayout extends VBox
                     spaceElementsEvenly = (boolean) entry.getValue();
                     break;
                 case "elements":
-                    elements = (ArrayList<Element>) entry.getValue();
+                    elements = (ArrayList<AbstractElement>) entry.getValue();
                     break;
                 case "rows":
                     rowCount = (int) entry.getValue();
@@ -52,13 +52,13 @@ public class VBoxLayout extends VBox
 
     private void addAllElements()
     {
-        for(Element e : elements)
+        for(AbstractElement e : elements)
         {
             refineElementValues(e);
-            this.getChildren().add(e.getRowIdx(), (Node) e);
+            this.getChildren().add(e.getRowIdx(), e.getNodeVersion());
         }
     }
-    private void refineElementValues(Element element)
+    private void refineElementValues(AbstractElement element)
     {
         if(spaceElementsEvenly)
         {

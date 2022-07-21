@@ -1,82 +1,52 @@
 package io.fi0x.javaguimenu.elements;
 
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 
-public class RegularButton extends Button implements Element
+public class RegularButton extends AbstractElement
 {
-    private int colIdx = -1;
-    private int rowIdx = -1;
-    private int colSpan = 1;
-    private int rowSpan = 1;
-    private int xPos;
-    private int yPos;
+    private String buttonText;
+
+    public static RegularButton create(int columnIndex, int rowIndex)
+    {
+        return create(columnIndex, rowIndex, 1, 1);
+    }
+    public static RegularButton create(double xPosition, double yPosition)
+    {
+        return create(-1, -1, xPosition, yPosition);
+    }
+    public static RegularButton create(int columnIndex, int rowIndex, double xPosition, double yPosition)
+    {
+        return create(columnIndex, rowIndex, 1, 1, xPosition, yPosition);
+    }
     public static RegularButton create(int columnIndex, int rowIndex, int columnSpan, int rowSpan)
     {
-        return new RegularButton();
+        return create(columnIndex, rowIndex, columnSpan, rowSpan, 0, 0);
     }
-    @Override
-    public String getTypeName()
+    public static RegularButton create(int columnIndex, int rowIndex, int columnSpan, int rowSpan, double xPosition, double yPosition)
     {
-        return this.getClass().getName();
+        RegularButton btn = new RegularButton();
+        btn.setColIdx(columnIndex);
+        btn.setRowIdx(rowIndex);
+        btn.setColSpan(columnSpan);
+        btn.setRowSpan(rowSpan);
+        btn.setXPos(xPosition);
+        btn.setYPos(yPosition);
+        return btn;
     }
+
     @Override
-    public void setColIdx(int columnIndex)
+    public Node getNodeVersion()
     {
-        colIdx = columnIndex;
+        Button btn = new Button();
+
+        btn.setText(buttonText);
+
+        return btn;
     }
-    @Override
-    public int getColIdx()
+
+    public void setText(String text)
     {
-        return colIdx;
-    }
-    @Override
-    public void setRowIdx(int rowIndex)
-    {
-        rowIdx = rowIndex;
-    }
-    @Override
-    public int getRowIdx()
-    {
-        return rowIdx;
-    }
-    @Override
-    public void setColSpan(int columnSpan)
-    {
-        colSpan = columnSpan;
-    }
-    @Override
-    public int getColSpan()
-    {
-        return colSpan;
-    }
-    @Override
-    public void setRowSpan(int rowSpan)
-    {
-        this.rowSpan = rowSpan;
-    }
-    @Override
-    public int getRowSpan()
-    {
-        return rowSpan;
-    }
-    @Override
-    public void setXPos(int xPosition)
-    {
-        xPos = xPosition;
-    }
-    @Override
-    public int getXPos()
-    {
-        return xPos;
-    }
-    @Override
-    public void setYPos(int yPosition)
-    {
-        yPos = yPosition;
-    }
-    @Override
-    public int getYPos()
-    {
-        return yPos;
+        buttonText = text;
     }
 }

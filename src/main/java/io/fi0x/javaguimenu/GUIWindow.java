@@ -1,7 +1,8 @@
 package io.fi0x.javaguimenu;
 
+import com.sun.javafx.application.LauncherImpl;
 import io.fi0x.javaguimenu.controller.MainController;
-import io.fi0x.javaguimenu.elements.Element;
+import io.fi0x.javaguimenu.elements.AbstractElement;
 import io.fi0x.javaguimenu.layouts.LayoutTypes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +22,7 @@ public class GUIWindow extends Application
     private double height = 450;
     private boolean resizable = true;
     private LayoutTypes layout = LayoutTypes.Grid;
-    private final ArrayList<Element> elements = new ArrayList<>();
+    private final ArrayList<AbstractElement> elements = new ArrayList<>();
     private boolean spaceElementsEvenly;
     private int columns = 1;
     private int rows = 1;
@@ -53,7 +54,9 @@ public class GUIWindow extends Application
 
     public void start(String[] args)
     {
+        System.out.println("Elements in start: " + elements.size());
         Application.launch(args);
+//        LauncherImpl.launchApplication(this.getClass(), args);
     }
 
     public void setTitle(String title)
@@ -73,8 +76,9 @@ public class GUIWindow extends Application
     {
         layout = type;
     }
-    public void addElement(Element node)
+    public void addElement(AbstractElement node)
     {
+        System.out.println("Adding element");
         for(int i = 0; i <= elements.size(); i++)
         {
             if(i == elements.size())
@@ -88,6 +92,7 @@ public class GUIWindow extends Application
                 break;
             }
         }
+        System.out.println("Elements: " + elements.size());
     }
     public void setElementSpacing(boolean spaceEvenly)
     {

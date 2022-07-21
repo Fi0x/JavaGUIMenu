@@ -1,11 +1,9 @@
 package io.fi0x.javaguimenu.layouts;
 
-import io.fi0x.javaguimenu.elements.Element;
+import io.fi0x.javaguimenu.elements.AbstractElement;
 import io.fi0x.javalogger.logging.Logger;
-import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
-import javafx.scene.Node;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -16,9 +14,8 @@ import java.util.Map;
 
 public class GridLayout extends GridPane
 {
-    private final Map<String, Object> settings;
     private boolean spaceElementsEvenly = true;
-    private ArrayList<Element> elements;
+    private ArrayList<AbstractElement> elements;
     private int nextColIdx = 0;
     private int nextRowIdx = 0;
 
@@ -27,13 +24,7 @@ public class GridLayout extends GridPane
 
     public GridLayout(Map<String, Object> userSettings)
     {
-        settings = userSettings;
-    }
-
-    @FXML
-    private void initialize()
-    {
-        setUserOptions(settings);
+        setUserOptions(userSettings);
     }
 
     private void setUserOptions(Map<String, Object> settings)
@@ -46,7 +37,7 @@ public class GridLayout extends GridPane
                     spaceElementsEvenly = (boolean) entry.getValue();
                     break;
                 case "elements":
-                    elements = (ArrayList<Element>) entry.getValue();
+                    elements = (ArrayList<AbstractElement>) entry.getValue();
                     break;
                 case "columns":
                     colCount = (int) entry.getValue();
@@ -64,13 +55,13 @@ public class GridLayout extends GridPane
 
     private void addAllElements()
     {
-        for(Element e : elements)
+        for(AbstractElement e : elements)
         {
             refineElementValues(e);
-            this.add((Node) e, e.getColIdx(), e.getRowIdx(), e.getColSpan(), e.getRowSpan());
+            this.add(e.getNodeVersion(), e.getColIdx(), e.getRowIdx(), e.getColSpan(), e.getRowSpan());
         }
     }
-    private void refineElementValues(Element element)
+    private void refineElementValues(AbstractElement element)
     {
         if(spaceElementsEvenly)
         {
