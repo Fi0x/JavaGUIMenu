@@ -3,12 +3,15 @@ package io.fi0x.javaguimenu.elements;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 
+import java.util.ArrayList;
+
 /**
  * This class represents a normal javafx button with special settings used for the selected layout.
  */
 public class RegularButton extends AbstractElement
 {
     private String buttonText;
+    private final ArrayList<Listener> listeners = new ArrayList<>();
 
     /**
      * Get an object of this UI element to place later.
@@ -76,12 +79,27 @@ public class RegularButton extends AbstractElement
         return btn;
     }
 
+    /**
+     * This method adds a listener to the button.
+     * @param listener The listener that should be added.
+     */
+    public void addListener(Listener listener)
+    {
+        listeners.add(listener);
+    }
+
     @Override
     public Node getNodeVersion()
     {
         Button btn = new Button();
 
         btn.setText(buttonText);
+        btn.setOnMouseClicked(event ->
+        {
+            final RegularButton sender = this;
+            for(Listener listener : listeners)
+                new Thread(() -> listener.trigger(sender)).start();
+        });
 
         return btn;
     }
