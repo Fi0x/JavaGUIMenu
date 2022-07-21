@@ -6,7 +6,7 @@
 
     <groupId>io.github.Fi0x</groupId>
     <artifactId>JavaGUIMenu</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <name>Java GUI Menu</name>
     <description>This is a library to quickly create a menu in java</description>
     <url>http://github.com/Fi0x/JavaGUIMenu</url>
