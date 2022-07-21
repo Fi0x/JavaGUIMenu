@@ -7,6 +7,11 @@ import javafx.scene.layout.*;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * This class creates a VBox layout where elements can be placed.
+ * Rows are used to position elements, columns are ignored.
+ * The x and y positions of elements set an offset from the default positions.
+ */
 public class VBoxLayout extends VBox
 {
     private boolean spaceElementsEvenly = true;

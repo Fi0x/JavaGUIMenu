@@ -2,13 +2,17 @@ package io.fi0x.javaguimenu.layouts;
 
 import io.fi0x.javaguimenu.elements.AbstractElement;
 import io.fi0x.javalogger.logging.Logger;
-import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * This class creates an Absolute layout where elements can be placed.
+ * Columns and rows are ignored and only the x and y positions of elements
+ * are used to set the location.
+ */
 public class AbsoluteLayout extends Pane
 {
     private ArrayList<AbstractElement> elements;

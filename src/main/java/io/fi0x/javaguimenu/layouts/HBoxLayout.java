@@ -7,6 +7,11 @@ import javafx.scene.layout.*;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * This class creates a HBox layout where elements can be placed.
+ * Columns are used to position elements, rows are ignored.
+ * The x and y positions of elements set an offset from the default positions.
+ */
 public class HBoxLayout extends HBox
 {
     private boolean spaceElementsEvenly = true;

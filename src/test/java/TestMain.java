@@ -13,11 +13,12 @@ public class TestMain
         btn1.setColIdx(0);
         btn1.setRowIdx(0);
         btn1.setText("Hallo");
+        btn1.setColSpan(2);
         GUIWindow.addElement(btn1);
         GUIWindow.setColumns(3);
         GUIWindow.setRows(3);
         GUIWindow.setTitle("Hi");
-        GUIWindow.setLayout(LayoutTypes.VBox);
+        GUIWindow.setLayout(LayoutTypes.Grid);
 
         GUIWindow.start(args);
     }

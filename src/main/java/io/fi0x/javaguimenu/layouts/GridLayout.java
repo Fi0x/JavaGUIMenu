@@ -9,6 +9,11 @@ import javafx.scene.layout.*;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * This class creates a Grid layout where elements can be placed.
+ * Columns and rows are used to position elements
+ * and the x and y positions of elements set an offset from the default positions.
+ */
 public class GridLayout extends GridPane
 {
     private boolean spaceElementsEvenly = true;
@@ -46,10 +51,6 @@ public class GridLayout extends GridPane
                     break;
                 case "rows":
                     rowCount = (int) entry.getValue();
-                    break;
-                case "width":
-                    break;
-                case "height":
                     break;
                 default:
                     Logger.log("Invalid user-settings-entry in grid layout detected", "info");
