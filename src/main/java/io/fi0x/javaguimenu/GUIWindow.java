@@ -123,7 +123,7 @@ public class GUIWindow extends Application
                 elements.add(node);
                 break;
             }
-            if(elements.get(i).getRowIdx() >= node.getRowIdx())
+            if(elements.get(i).getRowIdx() > node.getRowIdx())
             {
                 elements.add(i, node);
                 break;
