@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class GUIWindow extends Application
     private static String windowTitle = "Unnamed";
     private static double width = 800;
     private static double height = 450;
+    private static String windowIcon = "images/logo.png";
     private static boolean resizable = true;
     private static LayoutTypes layout = LayoutTypes.Grid;
     private static final ArrayList<AbstractElement> elements = new ArrayList<>();
@@ -51,6 +53,7 @@ public class GUIWindow extends Application
         primaryStage.setTitle(windowTitle);
         primaryStage.setHeight(height);
         primaryStage.setWidth(width);
+        primaryStage.getIcons().add(new Image(windowIcon));
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(resizable);
         primaryStage.show();
@@ -90,6 +93,14 @@ public class GUIWindow extends Application
     {
         width = w;
         height = h;
+    }
+    /**
+     * Changes the icon of the window.
+     * @param icon The path to the image that should be used.
+     */
+    public static void setWindowIcon(String icon)
+    {
+        windowIcon = icon;
     }
     /**
      * Sets the resizable-boolean of the javafx-window.
