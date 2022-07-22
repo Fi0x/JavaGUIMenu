@@ -23,6 +23,7 @@ public class GridLayout extends GridPane
 
     private int colCount = 1;
     private int rowCount = 1;
+    private boolean gridLaneVisibility = false;
 
     public GridLayout(Map<String, Object> userSettings)
     {
@@ -32,6 +33,8 @@ public class GridLayout extends GridPane
         AnchorPane.setRightAnchor(this, 0d);
 
         setUserOptions(userSettings);
+
+        this.setGridLinesVisible(gridLaneVisibility);
     }
 
     private void setUserOptions(Map<String, Object> settings)
@@ -53,6 +56,9 @@ public class GridLayout extends GridPane
                     break;
                 case "rows":
                     rowCount = (int) entry.getValue();
+                    break;
+                case "gridLanes":
+                    gridLaneVisibility = (boolean) entry.getValue();
                     break;
                 default:
                     Logger.log("Invalid user-settings-entry in grid layout detected", "info");

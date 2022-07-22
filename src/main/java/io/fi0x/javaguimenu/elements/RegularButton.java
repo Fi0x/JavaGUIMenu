@@ -12,8 +12,8 @@ import java.util.ArrayList;
  */
 public class RegularButton extends AbstractElement
 {
-    private String buttonText;
-    private final ArrayList<Listener> listeners = new ArrayList<>();
+    protected String buttonText;
+    protected final ArrayList<Listener> listeners = new ArrayList<>();
 
     /**
      * Get an object of this UI element to place later.
@@ -99,7 +99,7 @@ public class RegularButton extends AbstractElement
         Button btn = new Button();
 
         btn.setText(buttonText);
-        btn.setTextAlignment(TextAlignment.CENTER);
+        btn.setId("regular_button");
         btn.setOnMouseClicked(event ->
         {
             final RegularButton sender = this;

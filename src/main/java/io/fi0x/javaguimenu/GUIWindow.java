@@ -33,6 +33,7 @@ public class GUIWindow extends Application
     private static boolean spaceElementsEvenly;
     private static int columns = 1;
     private static int rows = 1;
+    private static boolean gridLaneVisibility = false;
 
     @Override
     public void start(Stage primaryStage)
@@ -178,6 +179,15 @@ public class GUIWindow extends Application
     {
         rows = rowCount;
     }
+    /**
+     * This method provides the option to display the lines of a grid layout.
+     * Only works on grid-layouts.
+     * @param gridLanesVisible Weather or not the grid lanes should be visible.
+     */
+    public static void showGridLanes(boolean gridLanesVisible)
+    {
+        gridLaneVisibility = gridLanesVisible;
+    }
 
     private Map<String, Object> generateUserOptions()
     {
@@ -188,6 +198,7 @@ public class GUIWindow extends Application
         options.put("elementSpacing", spaceElementsEvenly);
         options.put("columns", columns);
         options.put("rows", rows);
+        options.put("gridLanes", gridLaneVisibility);
 
         return options;
     }
