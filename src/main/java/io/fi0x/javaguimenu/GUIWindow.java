@@ -26,6 +26,7 @@ public class GUIWindow extends Application
     private static double width = 800;
     private static double height = 450;
     private static String windowIcon = "images/logo.png";
+    private static String cssFile = "css/main.css";
     private static boolean resizable = true;
     private static LayoutTypes layout = LayoutTypes.Grid;
     private static final ArrayList<AbstractElement> elements = new ArrayList<>();
@@ -54,7 +55,9 @@ public class GUIWindow extends Application
         primaryStage.setHeight(height);
         primaryStage.setWidth(width);
         primaryStage.getIcons().add(new Image(windowIcon));
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(cssFile);
+        primaryStage.setScene(scene);
         primaryStage.setResizable(resizable);
         primaryStage.show();
     }
@@ -101,6 +104,14 @@ public class GUIWindow extends Application
     public static void setWindowIcon(String icon)
     {
         windowIcon = icon;
+    }
+    /**
+     * Replaces the default css-file with a custom one.
+     * @param cssFilePath The path to the css-file that should be used.
+     */
+    public static void setCssFile(String cssFilePath)
+    {
+        cssFile = cssFilePath;
     }
     /**
      * Sets the resizable-boolean of the javafx-window.
