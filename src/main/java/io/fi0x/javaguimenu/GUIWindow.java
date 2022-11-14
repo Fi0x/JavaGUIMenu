@@ -28,6 +28,7 @@ public class GUIWindow extends Application
     private static String windowIcon = "images/logo.png";
     private static String cssFile = "css/main.css";
     private static boolean resizable = true;
+    private static boolean closeAllOnStop = false;
     private static LayoutTypes layout = LayoutTypes.Grid;
     private static final ArrayList<AbstractElement> elements = new ArrayList<>();
     private static boolean spaceElementsEvenly;
@@ -61,6 +62,12 @@ public class GUIWindow extends Application
         primaryStage.setScene(scene);
         primaryStage.setResizable(resizable);
         primaryStage.show();
+    }
+    @Override
+    public void stop()
+    {
+        if(closeAllOnStop)
+            System.exit(0);
     }
 
     /**
@@ -122,6 +129,16 @@ public class GUIWindow extends Application
     public static void setResizable(boolean isResizable)
     {
         resizable = isResizable;
+    }
+    /**
+     * Sets a boolean that determines if all other windows of this program should close
+     * when this fx-window is closed.
+     * @param stopAllOtherWindows Weather or not the window should force all other windows to close.
+     *                            Default is false.
+     */
+    public static void setStopAllOnExit(boolean stopAllOtherWindows)
+    {
+        closeAllOnStop = stopAllOtherWindows;
     }
     /**
      * This method changes the layout inside the menu-window.
