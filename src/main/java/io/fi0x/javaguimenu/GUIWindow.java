@@ -12,9 +12,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This class creates the main window for the menu
@@ -77,13 +75,10 @@ public class GUIWindow extends Application
      */
     public static void start(String[] args)
     {
-        for(String arg : args)
-        {
-            if(arg.equals("-d"))
-                Logger.getInstance().setDebug(true);
-            if(arg.equals("-v"))
-                Logger.getInstance().setVerbose(true);
-        }
+        List<String> arguments = Arrays.stream(args).toList();
+        Logger.getInstance().setDebug(arguments.contains("-d"));
+        Logger.getInstance().setVerbose(arguments.contains("-v"));
+
         Application.launch(args);
     }
 
@@ -169,7 +164,7 @@ public class GUIWindow extends Application
                 break;
             }
         }
-        Logger.log("Added new element to window", "verbose");
+        Logger.log("Added new element to window", Logger.TEMPLATE.VERBOSE);
     }
     /**
      * This method changes the behaviour of the element placement inside the layout.

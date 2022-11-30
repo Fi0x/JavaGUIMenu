@@ -9,6 +9,7 @@ public class TestMain
     public static void main(String[] args)
     {
         Logger.getInstance().setVerbose(true);
+        Logger.getInstance().setDebug(true);
 
         RegularButton btn1 = new RegularButton();
         btn1.setColIdx(0);

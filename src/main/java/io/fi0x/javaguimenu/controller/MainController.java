@@ -22,14 +22,14 @@ public class MainController
         LayoutTypes layout = (LayoutTypes) settings.get("layout");
         if(layout == null)
         {
-            Logger.log("No layout type found", "warning");
+            Logger.log("No layout type found", Logger.TEMPLATE.WARNING);
             return;
         }
 
         settings.remove("layout");
         setLayout(layout, settings);
 
-        Logger.log("Main controller initialized", "verbose");
+        Logger.log("Main controller initialized", Logger.TEMPLATE.VERBOSE);
     }
 
     private void setLayout(LayoutTypes type, Map<String, Object> settings)
@@ -37,28 +37,28 @@ public class MainController
         switch(type)
         {
             case Grid:
-                Logger.log("Using Grid layout", "verbose");
+                Logger.log("Using Grid layout", Logger.TEMPLATE.VERBOSE);
                 apMain.getChildren().add(new GridLayout(settings));
                 break;
             case VBox:
-                Logger.log("Using VBox layout", "verbose");
+                Logger.log("Using VBox layout", Logger.TEMPLATE.VERBOSE);
                 settings.remove("columns");
                 apMain.getChildren().add(new VBoxLayout(settings));
                 break;
             case HBox:
-                Logger.log("Using HBox layout", "verbose");
+                Logger.log("Using HBox layout", Logger.TEMPLATE.VERBOSE);
                 settings.remove("rows");
                 apMain.getChildren().add(new HBoxLayout(settings));
                 break;
             case Absolute:
-                Logger.log("Using Absolute layout", "verbose");
+                Logger.log("Using Absolute layout", Logger.TEMPLATE.VERBOSE);
                 settings.remove("elementSpacing");
                 settings.remove("rows");
                 settings.remove("columns");
                 apMain.getChildren().add(new AbsoluteLayout(settings));
                 break;
             default:
-                Logger.log("The selected layout is not valid", "warning");
+                Logger.log("The selected layout is not valid", Logger.TEMPLATE.WARNING);
                 break;
         }
     }

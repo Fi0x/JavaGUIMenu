@@ -31,7 +31,7 @@ public class HBoxLayout extends HBox
 
     private void setUserOptions(Map<String, Object> settings)
     {
-        Logger.log("HBox layout setup started", "verbose");
+        Logger.log("HBox layout setup started", Logger.TEMPLATE.VERBOSE);
         for(Map.Entry<String, Object> entry : settings.entrySet())
         {
             switch(entry.getKey())
@@ -41,13 +41,13 @@ public class HBoxLayout extends HBox
                     break;
                 case "elements":
                     elements = (ArrayList<AbstractElement>) entry.getValue();
-                    Logger.log("Loaded " + elements.size() + " elements from settings-map", "verbose");
+                    Logger.log("Loaded " + elements.size() + " elements from settings-map", Logger.TEMPLATE.VERBOSE);
                     break;
                 case "columns":
                     colCount = (int) entry.getValue();
                     break;
                 default:
-                    Logger.log("Invalid user-settings-entry in grid layout detected", "info");
+                    Logger.log("Invalid user-settings-entry in grid layout detected", Logger.TEMPLATE.INFO);
             }
         }
         addAllElements();
@@ -60,7 +60,7 @@ public class HBoxLayout extends HBox
             refineElementValues(e);
             this.getChildren().add(e.getColIdx(), e.getNodeVersion());
         }
-        Logger.log("Added " + elements.size() + " elements to layout", "verbose");
+        Logger.log("Added " + elements.size() + " elements to layout", Logger.TEMPLATE.VERBOSE);
     }
     private void refineElementValues(AbstractElement element)
     {

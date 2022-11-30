@@ -79,7 +79,7 @@ public class RegularButton extends AbstractElement
         btn.setXPos(xPosition);
         btn.setYPos(yPosition);
 
-        Logger.log("New button created", "verbose");
+        Logger.log("New button created", Logger.TEMPLATE.VERBOSE);
 
         return btn;
     }

@@ -29,16 +29,16 @@ public class AbsoluteLayout extends Pane
 
     private void setUserOptions(Map<String, Object> settings)
     {
-        Logger.log("Absolute layout setup started", "verbose");
+        Logger.log("Absolute layout setup started", Logger.TEMPLATE.VERBOSE);
         for(Map.Entry<String, Object> entry : settings.entrySet())
         {
             if("elements".equals(entry.getKey()))
             {
                 elements = (ArrayList<AbstractElement>) entry.getValue();
-                Logger.log("Loaded " + elements.size() + " elements from settings-map", "verbose");
+                Logger.log("Loaded " + elements.size() + " elements from settings-map", Logger.TEMPLATE.VERBOSE);
             }
             else
-                Logger.log("Invalid user-settings-entry in grid layout detected", "info");
+                Logger.log("Invalid user-settings-entry in grid layout detected", Logger.TEMPLATE.INFO);
         }
         addAllElements();
     }
@@ -52,6 +52,6 @@ public class AbsoluteLayout extends Pane
             n.setTranslateY(e.getYPos());
             this.getChildren().add(n);
         }
-        Logger.log("Added " + elements.size() + " elements to layout", "verbose");
+        Logger.log("Added " + elements.size() + " elements to layout", Logger.TEMPLATE.VERBOSE);
     }
 }
