@@ -1,7 +1,7 @@
 package io.fi0x.javaguimenu.layouts;
 
 import io.fi0x.javaguimenu.elements.AbstractElement;
-import io.fi0x.javalogger.logging.Logger;
+import io.fi0x.javalogger.logging.LOG;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
 
@@ -17,6 +17,11 @@ public class AbsoluteLayout extends Pane
 {
     private ArrayList<AbstractElement> elements;
 
+    /**
+     * The main constructor of this method.
+     *
+     * @param userSettings The user-settings that should be used for this layout.
+     */
     public AbsoluteLayout(Map<String, Object> userSettings)
     {
         AnchorPane.setTopAnchor(this, 0d);
@@ -29,16 +34,12 @@ public class AbsoluteLayout extends Pane
 
     private void setUserOptions(Map<String, Object> settings)
     {
-        Logger.log("Absolute layout setup started", Logger.TEMPLATE.VERBOSE);
         for(Map.Entry<String, Object> entry : settings.entrySet())
         {
             if("elements".equals(entry.getKey()))
-            {
                 elements = (ArrayList<AbstractElement>) entry.getValue();
-                Logger.log("Loaded " + elements.size() + " elements from settings-map", Logger.TEMPLATE.VERBOSE);
-            }
             else
-                Logger.log("Invalid user-settings-entry in grid layout detected", Logger.TEMPLATE.INFO);
+                LOG.WARN("Invalid user-settings-entry in absolute layout detected", "JavaGUIMenu", 610);
         }
         addAllElements();
     }
@@ -52,6 +53,5 @@ public class AbsoluteLayout extends Pane
             n.setTranslateY(e.getYPos());
             this.getChildren().add(n);
         }
-        Logger.log("Added " + elements.size() + " elements to layout", Logger.TEMPLATE.VERBOSE);
     }
 }

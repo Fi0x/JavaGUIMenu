@@ -1,65 +1,76 @@
 package io.fi0x.javaguimenu.controller;
 
 import io.fi0x.javaguimenu.layouts.*;
-import io.fi0x.javalogger.logging.Logger;
+import io.fi0x.javalogger.logging.LOG;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.Map;
 
+/**
+ * This class controls the GUI.
+ */
 public class MainController
 {
+    /**
+     * This pane is the anchor-pane of the GUI where all other elements get added.
+     */
     @FXML
     public AnchorPane apMain;
+
+    /**
+     * Default constructor of this class.
+     */
+    public MainController()
+    {
+    }
 
     @FXML
     private void initialize()
     {
     }
 
+    /**
+     * This method lets the user add individual options for the layout.
+     *
+     * @param settings The settings that should be integrated into the layout.
+     */
     public void setUserOptions(Map<String, Object> settings)
     {
         LayoutTypes layout = (LayoutTypes) settings.get("layout");
         if(layout == null)
         {
-            Logger.log("No layout type found", Logger.TEMPLATE.WARNING);
+            LOG.WARN("No layout type found", "JavaGUIMenu", 611);
             return;
         }
 
         settings.remove("layout");
         setLayout(layout, settings);
-
-        Logger.log("Main controller initialized", Logger.TEMPLATE.VERBOSE);
     }
 
     private void setLayout(LayoutTypes type, Map<String, Object> settings)
     {
         switch(type)
         {
-            case Grid:
-                Logger.log("Using Grid layout", Logger.TEMPLATE.VERBOSE);
-                apMain.getChildren().add(new GridLayout(settings));
-                break;
-            case VBox:
-                Logger.log("Using VBox layout", Logger.TEMPLATE.VERBOSE);
+            case Grid -> apMain.getChildren().add(new GridLayout(settings));
+            case VBox ->
+            {
                 settings.remove("columns");
                 apMain.getChildren().add(new VBoxLayout(settings));
-                break;
-            case HBox:
-                Logger.log("Using HBox layout", Logger.TEMPLATE.VERBOSE);
+            }
+            case HBox ->
+            {
                 settings.remove("rows");
                 apMain.getChildren().add(new HBoxLayout(settings));
-                break;
-            case Absolute:
-                Logger.log("Using Absolute layout", Logger.TEMPLATE.VERBOSE);
+            }
+            case Absolute ->
+            {
                 settings.remove("elementSpacing");
                 settings.remove("rows");
                 settings.remove("columns");
                 apMain.getChildren().add(new AbsoluteLayout(settings));
-                break;
-            default:
-                Logger.log("The selected layout is not valid", Logger.TEMPLATE.WARNING);
-                break;
+            }
+            default -> LOG.WARN("The selected layout is not valid", "JavaGUIMenu", 611);
         }
     }
 }

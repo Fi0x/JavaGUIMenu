@@ -34,6 +34,13 @@ public class GUIWindow extends Application
     private static int rows = 1;
     private static boolean gridLaneVisibility = false;
 
+    /**
+     * Default constructor of this class.
+     */
+    public GUIWindow()
+    {
+    }
+
     @Override
     public void start(Stage primaryStage)
     {
@@ -164,7 +171,6 @@ public class GUIWindow extends Application
                 break;
             }
         }
-        Logger.log("Added new element to window", Logger.TEMPLATE.VERBOSE);
     }
     /**
      * This method changes the behaviour of the element placement inside the layout.
