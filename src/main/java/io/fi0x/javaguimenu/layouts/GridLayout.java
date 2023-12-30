@@ -1,7 +1,7 @@
 package io.fi0x.javaguimenu.layouts;
 
 import io.fi0x.javaguimenu.elements.AbstractElement;
-import io.fi0x.javalogger.logging.Logger;
+import io.fi0x.javalogger.logging.LOG;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.layout.*;
@@ -25,6 +25,11 @@ public class GridLayout extends GridPane
     private int rowCount = 1;
     private boolean gridLaneVisibility = false;
 
+    /**
+     * Main constructor of this class.
+     *
+     * @param userSettings The user-settings that should be used for this layout.
+     */
     public GridLayout(Map<String, Object> userSettings)
     {
         AnchorPane.setTopAnchor(this, 0d);
@@ -39,29 +44,16 @@ public class GridLayout extends GridPane
 
     private void setUserOptions(Map<String, Object> settings)
     {
-        Logger.log("Grid layout setup started", Logger.TEMPLATE.VERBOSE);
         for(Map.Entry<String, Object> entry : settings.entrySet())
         {
             switch(entry.getKey())
             {
-                case "elementSpacing":
-                    spaceElementsEvenly = (boolean) entry.getValue();
-                    break;
-                case "elements":
-                    elements = (ArrayList<AbstractElement>) entry.getValue();
-                    Logger.log("Loaded " + elements.size() + " elements from settings-map", Logger.TEMPLATE.VERBOSE);
-                    break;
-                case "columns":
-                    colCount = (int) entry.getValue();
-                    break;
-                case "rows":
-                    rowCount = (int) entry.getValue();
-                    break;
-                case "gridLanes":
-                    gridLaneVisibility = (boolean) entry.getValue();
-                    break;
-                default:
-                    Logger.log("Invalid user-settings-entry in grid layout detected", Logger.TEMPLATE.INFO);
+                case "elementSpacing" -> spaceElementsEvenly = (boolean) entry.getValue();
+                case "elements" -> elements = (ArrayList<AbstractElement>) entry.getValue();
+                case "columns" -> colCount = (int) entry.getValue();
+                case "rows" -> rowCount = (int) entry.getValue();
+                case "gridLanes" -> gridLaneVisibility = (boolean) entry.getValue();
+                default -> LOG.WARN("Invalid user-settings-entry in grid layout detected", "JavaGUIMenu", 610);
             }
         }
         setConstraints();
@@ -75,7 +67,6 @@ public class GridLayout extends GridPane
             refineElementValues(e);
             this.add(e.getNodeVersion(), e.getColIdx(), e.getRowIdx(), e.getColSpan(), e.getRowSpan());
         }
-        Logger.log("Added " + elements.size() + " elements to layout", Logger.TEMPLATE.VERBOSE);
     }
     private void refineElementValues(AbstractElement element)
     {
@@ -93,8 +84,7 @@ public class GridLayout extends GridPane
             element.setRowIdx(nextRowIdx);
 
             nextColIdx++;
-        }
-        else
+        } else
         {
             if(element.getColIdx() < 0)
                 element.setColIdx(0);

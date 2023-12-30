@@ -1,7 +1,7 @@
 package io.fi0x.javaguimenu.layouts;
 
 import io.fi0x.javaguimenu.elements.AbstractElement;
-import io.fi0x.javalogger.logging.Logger;
+import io.fi0x.javalogger.logging.LOG;
 import javafx.scene.layout.*;
 
 import java.util.ArrayList;
@@ -19,6 +19,12 @@ public class HBoxLayout extends HBox
     private int nextColIdx = 0;
     private int colCount = 1;
 
+
+    /**
+     * The main constructor of this method.
+     *
+     * @param userSettings The user-settings that should be used for this h-box.
+     */
     public HBoxLayout(Map<String, Object> userSettings)
     {
         AnchorPane.setTopAnchor(this, 0d);
@@ -31,23 +37,14 @@ public class HBoxLayout extends HBox
 
     private void setUserOptions(Map<String, Object> settings)
     {
-        Logger.log("HBox layout setup started", Logger.TEMPLATE.VERBOSE);
         for(Map.Entry<String, Object> entry : settings.entrySet())
         {
             switch(entry.getKey())
             {
-                case "elementSpacing":
-                    spaceElementsEvenly = (boolean) entry.getValue();
-                    break;
-                case "elements":
-                    elements = (ArrayList<AbstractElement>) entry.getValue();
-                    Logger.log("Loaded " + elements.size() + " elements from settings-map", Logger.TEMPLATE.VERBOSE);
-                    break;
-                case "columns":
-                    colCount = (int) entry.getValue();
-                    break;
-                default:
-                    Logger.log("Invalid user-settings-entry in grid layout detected", Logger.TEMPLATE.INFO);
+                case "elementSpacing" -> spaceElementsEvenly = (boolean) entry.getValue();
+                case "elements" -> elements = (ArrayList<AbstractElement>) entry.getValue();
+                case "columns" -> colCount = (int) entry.getValue();
+                default -> LOG.WARN("Invalid user-settings-entry in h-box layout detected", "JavaGUIMenu", 610);
             }
         }
         addAllElements();
@@ -60,7 +57,6 @@ public class HBoxLayout extends HBox
             refineElementValues(e);
             this.getChildren().add(e.getColIdx(), e.getNodeVersion());
         }
-        Logger.log("Added " + elements.size() + " elements to layout", Logger.TEMPLATE.VERBOSE);
     }
     private void refineElementValues(AbstractElement element)
     {

@@ -8,6 +8,19 @@ import javafx.scene.control.Button;
  */
 public class PriorityButton extends RegularButton
 {
+    /**
+     * Default constructor of this class.
+     */
+    public PriorityButton()
+    {
+        super();
+    }
+
+    /**
+     * This method returns the node that this element represents.
+     *
+     * @return The Node.
+     */
     @Override
     public Node getNodeVersion()
     {

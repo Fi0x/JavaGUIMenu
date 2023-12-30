@@ -1,9 +1,7 @@
 package io.fi0x.javaguimenu.elements;
 
-import io.fi0x.javalogger.logging.Logger;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
 
@@ -12,13 +10,27 @@ import java.util.ArrayList;
  */
 public class RegularButton extends AbstractElement
 {
+    /**
+     * The text that should be displayed on the button.
+     */
     protected String buttonText;
+    /**
+     * The listeners that will react to this button press.
+     */
     protected final ArrayList<Listener> listeners = new ArrayList<>();
 
     /**
+     * Default constructor of this class.
+     */
+    public RegularButton()
+    {
+    }
+
+    /**
      * Get an object of this UI element to place later.
+     *
      * @param columnIndex The index of the column this button should be in.
-     * @param rowIndex The index of the row this button should be in.
+     * @param rowIndex    The index of the row this button should be in.
      * @return The new object with the desired settings.
      */
     public static RegularButton create(int columnIndex, int rowIndex)
@@ -27,6 +39,7 @@ public class RegularButton extends AbstractElement
     }
     /**
      * Get an object of this UI element to place later.
+     *
      * @param xPosition The x-offset of this element from its default position.
      * @param yPosition The y-offset of this element from its default position.
      * @return The new object with the desired settings.
@@ -37,10 +50,11 @@ public class RegularButton extends AbstractElement
     }
     /**
      * Get an object of this UI element to place later.
+     *
      * @param columnIndex The index of the column this button should be in.
-     * @param rowIndex The index of the row this button should be in.
-     * @param xPosition The x-offset of this element from its default position.
-     * @param yPosition The y-offset of this element from its default position.
+     * @param rowIndex    The index of the row this button should be in.
+     * @param xPosition   The x-offset of this element from its default position.
+     * @param yPosition   The y-offset of this element from its default position.
      * @return The new object with the desired settings.
      */
     public static RegularButton create(int columnIndex, int rowIndex, double xPosition, double yPosition)
@@ -49,10 +63,11 @@ public class RegularButton extends AbstractElement
     }
     /**
      * Get an object of this UI element to place later.
+     *
      * @param columnIndex The index of the column this button should be in.
-     * @param rowIndex The index of the row this button should be in.
-     * @param columnSpan How many columns this element should fill.
-     * @param rowSpan How many rows this element should fill.
+     * @param rowIndex    The index of the row this button should be in.
+     * @param columnSpan  How many columns this element should fill.
+     * @param rowSpan     How many rows this element should fill.
      * @return The new object with the desired settings.
      */
     public static RegularButton create(int columnIndex, int rowIndex, int columnSpan, int rowSpan)
@@ -61,12 +76,13 @@ public class RegularButton extends AbstractElement
     }
     /**
      * Get an object of this UI element to place later.
+     *
      * @param columnIndex The index of the column this button should be in.
-     * @param rowIndex The index of the row this button should be in.
-     * @param columnSpan How many columns this element should fill.
-     * @param rowSpan How many rows this element should fill.
-     * @param xPosition The x-offset of this element from its default position.
-     * @param yPosition The y-offset of this element from its default position.
+     * @param rowIndex    The index of the row this button should be in.
+     * @param columnSpan  How many columns this element should fill.
+     * @param rowSpan     How many rows this element should fill.
+     * @param xPosition   The x-offset of this element from its default position.
+     * @param yPosition   The y-offset of this element from its default position.
      * @return The new object with the desired settings.
      */
     public static RegularButton create(int columnIndex, int rowIndex, int columnSpan, int rowSpan, double xPosition, double yPosition)
@@ -79,13 +95,12 @@ public class RegularButton extends AbstractElement
         btn.setXPos(xPosition);
         btn.setYPos(yPosition);
 
-        Logger.log("New button created", Logger.TEMPLATE.VERBOSE);
-
         return btn;
     }
 
     /**
      * This method adds a listener to the button.
+     *
      * @param listener The listener that should be added.
      */
     public void addListener(Listener listener)
@@ -93,6 +108,11 @@ public class RegularButton extends AbstractElement
         listeners.add(listener);
     }
 
+    /**
+     * This method returns the node that this element represents.
+     *
+     * @return The Node.
+     */
     @Override
     public Node getNodeVersion()
     {
@@ -112,6 +132,7 @@ public class RegularButton extends AbstractElement
 
     /**
      * Set the text this button should display.
+     *
      * @param text The text to display.
      */
     public void setText(String text)
