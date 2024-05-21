@@ -1,9 +1,9 @@
 package io.fi0x.javaguimenu.layouts;
 
 import io.fi0x.javaguimenu.elements.AbstractElement;
-import io.fi0x.javalogger.logging.LOG;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
+import lombok.extern.java.Log;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -13,6 +13,7 @@ import java.util.Map;
  * Columns and rows are ignored and only the x and y positions of elements
  * are used to set the location.
  */
+@Log
 public class AbsoluteLayout extends Pane
 {
     private ArrayList<AbstractElement> elements;
@@ -39,7 +40,7 @@ public class AbsoluteLayout extends Pane
             if("elements".equals(entry.getKey()))
                 elements = (ArrayList<AbstractElement>) entry.getValue();
             else
-                LOG.WARN("Invalid user-settings-entry in absolute layout detected", "JavaGUIMenu", 610);
+                log.warning("Invalid user-settings-entry in absolute layout detected");
         }
         addAllElements();
     }

@@ -1,10 +1,10 @@
 package io.fi0x.javaguimenu.layouts;
 
 import io.fi0x.javaguimenu.elements.AbstractElement;
-import io.fi0x.javalogger.logging.LOG;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.layout.*;
+import lombok.extern.java.Log;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -14,6 +14,7 @@ import java.util.Map;
  * Columns and rows are used to position elements
  * and the x and y positions of elements set an offset from the default positions.
  */
+@Log
 public class GridLayout extends GridPane
 {
     private boolean spaceElementsEvenly = true;
@@ -53,7 +54,7 @@ public class GridLayout extends GridPane
                 case "columns" -> colCount = (int) entry.getValue();
                 case "rows" -> rowCount = (int) entry.getValue();
                 case "gridLanes" -> gridLaneVisibility = (boolean) entry.getValue();
-                default -> LOG.WARN("Invalid user-settings-entry in grid layout detected", "JavaGUIMenu", 610);
+                default -> log.warning("Invalid user-settings-entry in grid layout detected");
             }
         }
         setConstraints();

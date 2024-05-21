@@ -1,8 +1,8 @@
 package io.fi0x.javaguimenu.layouts;
 
 import io.fi0x.javaguimenu.elements.AbstractElement;
-import io.fi0x.javalogger.logging.LOG;
 import javafx.scene.layout.*;
+import lombok.extern.java.Log;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -12,6 +12,7 @@ import java.util.Map;
  * Columns are used to position elements, rows are ignored.
  * The x and y positions of elements set an offset from the default positions.
  */
+@Log
 public class HBoxLayout extends HBox
 {
     private boolean spaceElementsEvenly = true;
@@ -44,7 +45,7 @@ public class HBoxLayout extends HBox
                 case "elementSpacing" -> spaceElementsEvenly = (boolean) entry.getValue();
                 case "elements" -> elements = (ArrayList<AbstractElement>) entry.getValue();
                 case "columns" -> colCount = (int) entry.getValue();
-                default -> LOG.WARN("Invalid user-settings-entry in h-box layout detected", "JavaGUIMenu", 610);
+                default -> log.warning("Invalid user-settings-entry in h-box layout detected");
             }
         }
         addAllElements();

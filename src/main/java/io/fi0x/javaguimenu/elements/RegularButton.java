@@ -2,6 +2,7 @@ package io.fi0x.javaguimenu.elements;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class RegularButton extends AbstractElement
     /**
      * The text that should be displayed on the button.
      */
+    @Setter
     protected String buttonText;
     /**
      * The listeners that will react to this button press.
@@ -128,15 +130,5 @@ public class RegularButton extends AbstractElement
         });
 
         return btn;
-    }
-
-    /**
-     * Set the text this button should display.
-     *
-     * @param text The text to display.
-     */
-    public void setText(String text)
-    {
-        buttonText = text;
     }
 }

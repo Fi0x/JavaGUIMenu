@@ -1,8 +1,8 @@
 package io.fi0x.javaguimenu.layouts;
 
 import io.fi0x.javaguimenu.elements.AbstractElement;
-import io.fi0x.javalogger.logging.LOG;
 import javafx.scene.layout.*;
+import lombok.extern.java.Log;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -12,6 +12,7 @@ import java.util.Map;
  * Rows are used to position elements, columns are ignored.
  * The x and y positions of elements set an offset from the default positions.
  */
+@Log
 public class VBoxLayout extends VBox
 {
     private boolean spaceElementsEvenly = true;
@@ -43,7 +44,7 @@ public class VBoxLayout extends VBox
                 case "elementSpacing" -> spaceElementsEvenly = (boolean) entry.getValue();
                 case "elements" -> elements = (ArrayList<AbstractElement>) entry.getValue();
                 case "rows" -> rowCount = (int) entry.getValue();
-                default -> LOG.WARN("Invalid user-settings-entry in v-box layout detected", "JavaGUIMenu", 610);
+                default -> log.warning("Invalid user-settings-entry in v-box layout detected");
             }
         }
         addAllElements();

@@ -1,15 +1,16 @@
 package io.fi0x.javaguimenu.controller;
 
 import io.fi0x.javaguimenu.layouts.*;
-import io.fi0x.javalogger.logging.LOG;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import lombok.extern.java.Log;
 
 import java.util.Map;
 
 /**
  * This class controls the GUI.
  */
+@Log
 public class MainController
 {
     /**
@@ -40,7 +41,7 @@ public class MainController
         LayoutTypes layout = (LayoutTypes) settings.get("layout");
         if(layout == null)
         {
-            LOG.WARN("No layout type found", "JavaGUIMenu", 611);
+            log.warning("No layout type found");
             return;
         }
 
@@ -70,7 +71,7 @@ public class MainController
                 settings.remove("columns");
                 apMain.getChildren().add(new AbsoluteLayout(settings));
             }
-            default -> LOG.WARN("The selected layout is not valid", "JavaGUIMenu", 611);
+            default -> log.warning("The selected layout is not valid");
         }
     }
 }

@@ -3,13 +3,13 @@ package io.fi0x.javaguimenu;
 import io.fi0x.javaguimenu.controller.MainController;
 import io.fi0x.javaguimenu.elements.AbstractElement;
 import io.fi0x.javaguimenu.layouts.LayoutTypes;
-import io.fi0x.javalogger.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import lombok.Setter;
 
 import java.io.IOException;
 import java.util.*;
@@ -23,15 +23,24 @@ public class GUIWindow extends Application
     private static String windowTitle = "Unnamed";
     private static double width = 800;
     private static double height = 450;
+    @Setter
     private static String windowIcon = "images/logo.png";
+    @Setter
     private static String cssFile = "css/main.css";
+    @Setter
     private static boolean resizable = true;
+    @Setter
     private static boolean closeAllOnStop = false;
+    @Setter
     private static LayoutTypes layout = LayoutTypes.Grid;
     private static final ArrayList<AbstractElement> elements = new ArrayList<>();
+    @Setter
     private static boolean spaceElementsEvenly;
+    @Setter
     private static int columns = 1;
+    @Setter
     private static int rows = 1;
+    @Setter
     private static boolean gridLaneVisibility = false;
 
     /**
@@ -82,10 +91,6 @@ public class GUIWindow extends Application
      */
     public static void start(String[] args)
     {
-        List<String> arguments = Arrays.stream(args).toList();
-        Logger.getInstance().setDebug(arguments.contains("-d"));
-        Logger.getInstance().setVerbose(arguments.contains("-v"));
-
         Application.launch(args);
     }
 
@@ -107,50 +112,7 @@ public class GUIWindow extends Application
         width = w;
         height = h;
     }
-    /**
-     * Changes the icon of the window.
-     * @param icon The path to the image that should be used.
-     */
-    public static void setWindowIcon(String icon)
-    {
-        windowIcon = icon;
-    }
-    /**
-     * Replaces the default css-file with a custom one.
-     * @param cssFilePath The path to the css-file that should be used.
-     */
-    public static void setCssFile(String cssFilePath)
-    {
-        cssFile = cssFilePath;
-    }
-    /**
-     * Sets the resizable-boolean of the javafx-window.
-     * @param isResizable Weather or not the menu-window should be resizable.
-     *                    Default is true.
-     */
-    public static void setResizable(boolean isResizable)
-    {
-        resizable = isResizable;
-    }
-    /**
-     * Sets a boolean that determines if all other windows of this program should close
-     * when this fx-window is closed.
-     * @param stopAllOtherWindows Weather or not the window should force all other windows to close.
-     *                            Default is false.
-     */
-    public static void setStopAllOnExit(boolean stopAllOtherWindows)
-    {
-        closeAllOnStop = stopAllOtherWindows;
-    }
-    /**
-     * This method changes the layout inside the menu-window.
-     * @param type Which type of layout should be used.
-     *             Default is a Grid-layout.
-     */
-    public static void setLayout(LayoutTypes type)
-    {
-        layout = type;
-    }
+
     /**
      * You can add menu-elements with this method.
      * All added elements will be displayed in the menu at their specified position.
@@ -171,40 +133,6 @@ public class GUIWindow extends Application
                 break;
             }
         }
-    }
-    /**
-     * This method changes the behaviour of the element placement inside the layout.
-     * @param spaceEvenly If true, element column and row-indices are ignored,
-     *                    and they get placed one after another.
-     */
-    public static void setElementSpacing(boolean spaceEvenly)
-    {
-        spaceElementsEvenly = spaceEvenly;
-    }
-    /**
-     * This method determines how many columns should be created in a grid.
-     * @param columnCount The number of columns to create.
-     */
-    public static void setColumns(int columnCount)
-    {
-        columns = columnCount;
-    }
-    /**
-     * This method determines how many rows should be created in a grid.
-     * @param rowCount The number of rows to create.
-     */
-    public static void setRows(int rowCount)
-    {
-        rows = rowCount;
-    }
-    /**
-     * This method provides the option to display the lines of a grid layout.
-     * Only works on grid-layouts.
-     * @param gridLanesVisible Weather or not the grid lanes should be visible.
-     */
-    public static void showGridLanes(boolean gridLanesVisible)
-    {
-        gridLaneVisibility = gridLanesVisible;
     }
 
     private Map<String, Object> generateUserOptions()

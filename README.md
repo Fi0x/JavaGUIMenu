@@ -6,6 +6,6 @@ A library to create graphical menus for java projects.
 <dependency>
   <groupId>io.github.Fi0x</groupId>
   <artifactId>JavaGUIMenu</artifactId>
-  <version>1.1.3</version>
+  <version>1.2.0</version>
 </dependency>
 ```
